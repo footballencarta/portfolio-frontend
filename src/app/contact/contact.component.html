@@ -1,0 +1,129 @@
+<div id="main" class="site-main">
+  <div id="main-content" class="single-page-content">
+    <div id="primary" class="content-area">
+
+      <div class="page-title">
+        <h1>Contact</h1>
+        <div class="page-subtitle">
+            <h4> Get in Touch</h4>
+        </div>
+      </div>
+
+      <div id="content" class="page-content site-content single-post" role="main">
+
+        <div class="row">
+          <div class=" col-xs-12 col-sm-4 ">
+
+            <div id="info_list_1" class="info-list-w-icon">
+              <div class="info-block-w-icon">
+                <div class="ci-icon">
+                  <i class="linecons linecons-location"></i>
+                </div>
+                <div class="ci-text">
+                  <h4>Manchester</h4>
+                  <p>Based in the heart of the North.</p>
+                </div>
+              </div>
+
+              <div class="info-block-w-icon">
+                <div class="ci-icon">
+                  <i class="fab fa-github"></i>
+                </div>
+                <div class="ci-text">
+                  <h4>footballencarta</h4>
+                  <p><a href='https://github.com/footballencarta' target='_blank'>Have a nosey at my Github</a></p>
+                </div>
+              </div>
+
+              <div class="info-block-w-icon">
+                <div class="ci-icon">
+                  <i class="fab fa-linkedin-in"></i>
+                </div>
+                <div class="ci-text">
+                  <h4>Damon Williams</h4>
+                  <p><a href='https://www.linkedin.com/in/dwilliams3/' target='_blank'>Get in Touch with me on LinkedIn</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-xs-12 col-sm-8 ">
+            <div class="block-title">
+              <h2>Or send me a message</h2>
+            </div>
+
+            <form id="contact_form" class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+              <div class="alert alert-danger" *ngIf='serverError'>Sorry, there was a problem sending your message. Please try again later.</div>
+              <div class="alert alert-success" *ngIf='success'>Thanks! Your email was sent.</div>
+
+              <div class="controls two-columns">
+                <div class="fields clearfix">
+                  <div class="left-column">
+                    <div class="form-group form-group-with-icon">
+                      <input id="form_name" type="text" name="name" class="form-control" placeholder="Full Name" required="required" data-error="Name is required." formControlName="name">
+                      <div class="form-control-border"></div>
+                      <div *ngIf="contactForm.get('name')?.invalid && formSubmitted" class="help-block with-errors">
+                        <div *ngIf="contactForm.get('name')?.errors?.required">
+                          Please enter your name.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group form-group-with-icon">
+                      <input id="form_email" type="email" name="email" class="form-control" placeholder="Email Address" required="required" formControlName="from">
+                      <div class="form-control-border"></div>
+                      <div *ngIf="contactForm.get('from')?.invalid && formSubmitted" class="help-block with-errors">
+                        <div *ngIf="contactForm.get('from')?.errors?.required">
+                         Please enter an email.
+                        </div>
+                        <div *ngIf="contactForm.get('from')?.errors?.email">
+                          That doesn't look like a valid email.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group form-group-with-icon">
+                      <input id="form_name" type="text" name="subject" class="form-control" placeholder="Subject" required="required" formControlName="subject">
+                      <div class="form-control-border"></div>
+                      <div *ngIf="contactForm.get('subject')?.invalid && formSubmitted" class="help-block with-errors">
+                        <div *ngIf="contactForm.get('subject')?.errors?.required">
+                          Please enter a subject.
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div class="right-column">
+                    <div class="form-group form-group-with-icon">
+                      <textarea id="form_message" name="message" class="form-control" placeholder="Message" rows="7" required="required" formControlName="message"></textarea>
+                      <div class="form-control-border"></div>
+                      <div *ngIf="contactForm.get('message')?.invalid && formSubmitted" class="help-block with-errors">
+                        <div *ngIf="contactForm.get('message')?.errors?.required">
+                          Please leave a message!
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group form-group-with-icon">
+                  <re-captcha formControlName="recaptcha"></re-captcha>
+                  <div class="form-control-border"></div>
+                  <div *ngIf="contactForm.get('recaptcha')?.invalid && formSubmitted" class="help-block with-errors">
+                    <div *ngIf="contactForm.get('recaptcha')?.errors?.required">
+                      Check here to confirm you're not a robot.
+                    </div>
+                  </div>
+                </div>
+
+                <button class="button btn-send">Send message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
