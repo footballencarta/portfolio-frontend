@@ -1,6 +1,6 @@
 language: nodejs
-php:
-  - 14
+node_js:
+  - lts/*
 
 jobs:
   include:
