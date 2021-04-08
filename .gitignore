@@ -47,3 +47,4 @@ Thumbs.db
 
 terraform/.terraform
 terraform/vars.tfvars
+terraform/.terraform.lock.hcl
