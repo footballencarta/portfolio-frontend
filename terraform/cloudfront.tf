@@ -62,7 +62,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   is_ipv6_enabled     = true
   default_root_object = "index.html"
 
-  # aliases = ["damonwilliams.co.uk", "www.damonwilliams.co.uk", "damon-williams.co.uk", "www.damon-williams.co.uk"]
+  aliases = keys(var.domains)
 
   custom_error_response {
     error_code         = 403
@@ -83,7 +83,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
       }
     }
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
@@ -105,7 +105,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
     path_pattern = "*.css"
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
@@ -127,7 +127,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
     path_pattern = "*.ttf"
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
@@ -149,7 +149,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
     path_pattern = "*.woff"
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
@@ -171,7 +171,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
     path_pattern = "*.woff2"
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
@@ -187,6 +187,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn = aws_acm_certificate.domain_cert.arn
+    ssl_support_method  = "sni-only"
   }
 }
