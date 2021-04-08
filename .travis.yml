@@ -6,6 +6,7 @@ node_js:
 script:
 - ng lint
 - npm run test-headless
+- ng build --prod
 
 deploy:
   provider: s3
