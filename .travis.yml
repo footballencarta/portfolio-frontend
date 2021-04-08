@@ -11,6 +11,7 @@ deploy:
   provider: s3
   bucket: dw-portfolio-frontend
   local-dir: dist
+  upload_dir: .
   acl: 'private'
   on:
     repo: footballencarta/portfolio-frontend
