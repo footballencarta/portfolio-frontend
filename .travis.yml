@@ -6,17 +6,19 @@ node_js:
 script:
 - ng lint
 - npm run test-headless
+- ng build --prod
 
 deploy:
   provider: s3
   bucket: dw-portfolio-frontend
-  local-dir: dist
   upload_dir: .
+  local_dir: dist
   acl: 'private'
   on:
     repo: footballencarta/portfolio-frontend
     branch: main
-  skip_cleanup: 'true'
+  cleanup: false
+  edge: true
 
 after_success:
 - test $TRAVIS_BRANCH = "main" &&
