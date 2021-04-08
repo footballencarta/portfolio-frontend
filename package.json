@@ -22,6 +22,7 @@
     "ng-click-outside": "^8.0.0",
     "ng-recaptcha": "^7.0.1",
     "rxjs": "~6.6.0",
+    "travis-ci-cloudfront-invalidation": "^1.1.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
