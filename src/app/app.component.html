@@ -1,55 +1,61 @@
-<!-- Header -->
-<header id="site_header" class="header">
-  <div class="header-content clearfix">
+<div class="lm-animated-bg" appBackgroundMovement [movementStrength]='5'></div>
 
-    <!-- Text Logo -->
-    <div class="text-logo">
-      <a [routerLink]="['/']" routerLinkActive="router-link-active">
-        <div class="logo-symbol">DW</div>
-        <div class="logo-text">Damon <span>Williams</span></div>
-      </a>
-    </div>
-    <!-- /Text Logo -->
+<div class="page-scroll">
+  <div id="page_container" class="page-container bg-move-effect" data-animation="transition-flip-in-right">
+    <!-- Header -->
+    <header id="site_header" class="header">
+      <div class="header-content clearfix">
 
-    <!-- Navigation -->
-    <div class="site-nav" [ngClass]="{'mobile-menu-hide': !showMenu}" (clickOutside)="onClickedOutside($event)" [exclude]="'.menu-toggle'">
-      <ul class="leven-classic-menu site-main-menu">
-        <li class="menu-item" routerLinkActive="current-menu-item" [routerLinkActiveOptions]="{exact: true}">
-          <a [routerLink]="['/']">About Me</a>
-        </li>
+        <!-- Text Logo -->
+        <div class="text-logo">
+          <a [routerLink]="['/']" routerLinkActive="router-link-active">
+            <div class="logo-symbol">DW</div>
+            <div class="logo-text">Damon <span>Williams</span></div>
+          </a>
+        </div>
+        <!-- /Text Logo -->
 
-        <li class="menu-item" routerLinkActive="current-menu-item" [routerLinkActiveOptions]="{exact: true}">
-          <a [routerLink]="['/', 'cv']">CV</a>
-        </li>
+        <!-- Navigation -->
+        <div class="site-nav" [ngClass]="{'mobile-menu-hide': !showMenu}" (clickOutside)="onClickedOutside($event)" [exclude]="'.menu-toggle'">
+          <ul class="leven-classic-menu site-main-menu">
+            <li class="menu-item" routerLinkActive="current-menu-item" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/']">About Me</a>
+            </li>
 
-        <li class="menu-item"  routerLinkActive="current-menu-item" [routerLinkActiveOptions]="{exact: true}">
-          <a [routerLink]="['/', 'contact']" >Contact</a>
-        </li>
-      </ul>
-    </div>
+            <li class="menu-item" routerLinkActive="current-menu-item" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/', 'cv']">CV</a>
+            </li>
 
-    <!-- Mobile Menu Toggle -->
-    <a class="menu-toggle mobile-visible" (click)="toggleMenu()">
-      <i class="fa fa-bars"></i>
-    </a>
-    <!-- Mobile Menu Toggle -->
+            <li class="menu-item"  routerLinkActive="current-menu-item" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/', 'contact']" >Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <a class="menu-toggle mobile-visible" (click)="toggleMenu()">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- Mobile Menu Toggle -->
+      </div>
+    </header>
+    <!-- /Header -->
+    <router-outlet></router-outlet>
+
+    <!-- Footer -->
+    <footer class="site-footer clearfix">
+      <div class="footer-social">
+        <ul class="footer-social-links">
+          <li>
+            <a href="https://www.linkedin.com/in/dwilliams3" target="_blank">LinkedIn</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/footballencarta" target="_blank">GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <!-- /Footer -->
   </div>
-</header>
-<!-- /Header -->
-<router-outlet></router-outlet>
-
-<!-- Footer -->
-<footer class="site-footer clearfix">
-  <div class="footer-social">
-    <ul class="footer-social-links">
-      <li>
-        <a href="https://www.linkedin.com/in/dwilliams3" target="_blank">LinkedIn</a>
-      </li>
-
-      <li>
-        <a href="https://github.com/footballencarta" target="_blank">GitHub</a>
-      </li>
-    </ul>
-  </div>
-</footer>
-<!-- /Footer -->
+</div>

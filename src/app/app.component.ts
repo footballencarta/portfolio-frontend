@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   showMenu = false;
+  backgroundPosition = '';
 
   constructor(router: Router) {
     router.events.subscribe(() => {

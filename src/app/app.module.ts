@@ -11,13 +11,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CvComponent } from './cv/cv.component';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { environment } from 'src/environments/environment';
+import { BackgroundMovementDirective } from './background-movement.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
     ContactComponent,
-    CvComponent
+    CvComponent,
+    BackgroundMovementDirective
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { environment } from 'src/environments/environment';
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: { siteKey: environment.recaptchaKey } as RecaptchaSettings,
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })
