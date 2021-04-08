@@ -1,24 +1,23 @@
-language: nodejs
+language: node_js
+
 node_js:
-  - lts/*
+- lts/*
 
-jobs:
-  include:
-    - stage: test
-      script:
-        - ng lint
-        - npm run test-headless
-    - stage: deploy
-      script:
-        - composer install --no-dev --no-scripts
-        - npx serverless deploy
+script:
+- ng lint
+- npm run test-headless
 
-stages:
-  - test
-  - name: deploy
-    if: (branch = main) AND (NOT (type IN (pull_request)))
+deploy:
+  provider: s3
+  bucket: dw-portfolio-frontend
+  local-dir: dist
+  acl: 'private'
+  on:
+    repo: footballencarta/portfolio-frontend
+    branch: main
+  skip_cleanup: 'true'
 
 after_success:
-    - test $TRAVIS_BRANCH = "main" &&
-      test $TRAVIS_PULL_REQUEST = "false" &&
-      bash <(curl -s https://codecov.io/bash)
+- test $TRAVIS_BRANCH = "main" &&
+  test $TRAVIS_PULL_REQUEST = "false" &&
+  bash <(curl -s https://codecov.io/bash)
