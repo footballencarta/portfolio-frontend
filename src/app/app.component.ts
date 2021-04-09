@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +10,14 @@ export class AppComponent {
   backgroundPosition = '';
 
   constructor(router: Router) {
-    router.events.subscribe(() => {
+    router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+
       this.showMenu = false;
+
+      document.getElementsByTagName('body')[0].scrollTo(0, 0);
     });
   }
 
