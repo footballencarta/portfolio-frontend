@@ -30,19 +30,19 @@ describe('AppComponent', () => {
     expect(app.showMenu).toBeTruthy();
   });
 
-  it('should hide on route change', () => {
+  it('should hide on route change', async () => {
     router = TestBed.inject(Router);
 
     app.showMenu = true;
 
     expect(app.showMenu).toBeTruthy();
 
-    router.navigateByUrl('/');
+    await router.navigateByUrl('/');
 
     expect(app.showMenu).toBeFalsy();
   });
 
-  it('should hide on route change', () => {
+  it('should hide on click outside', () => {
     app.showMenu = true;
 
     expect(app.showMenu).toBeTruthy();
